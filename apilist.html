@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>API Endpoints Documentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #007acc;
+      margin-top: 2rem;
+    }
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+    th {
+      background-color: #007acc;
+      color: #fff;
+      text-align: left;
+    }
+    td.method-get {
+      background-color: #d4edda;
+      color: #155724;
+      font-weight: bold;
+    }
+    td.method-post {
+      background-color: #cce5ff;
+      color: #004085;
+      font-weight: bold;
+    }
+    td.method-patch {
+      background-color: #ffeeba;
+      color: #856404;
+      font-weight: bold;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>API Endpoints Documentation</h1>
+  <audio controls  src="https://drive.google.com/uc?export=download&id=1ZEk1GlwN3famXmlCHv581UOH6RF548kX"></audio>
+  <audio controls>
+    <source src="https://drive.google.com/file/d/1ZEk1GlwN3famXmlCHv581UOH6RF548kX/preview" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="myAudio" controls>
+    <source src="https://s101.naasongs.download/Sundarakanda%20-%20%282024%29/%5BiSongs.info%5D%2001%20-%20Bahusa%20Bahusa.mp3" type="audio/mpeg">
+  </audio>
+  
+  <button onclick="document.getElementById('myAudio').play()">Play</button>
+  <button onclick="document.getElementById('myAudio').pause()">Pause</button>
+  <!-- Anyone -->
+  <h2>🌐 Public / Anyone</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Endpoint</th>
+        <th>Description</th>
+        <th>Sample Request (if POST)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/auth/register/</td>
+        <td>Register as Job Seeker</td>
+        <td><pre>{
+  "username": "jobseeker1",
+  "email": "seeker@example.com",
+  "password": "password123",
+  "confirm_password": "password123",
+  "full_name": "John Doe",
+  "role": "user",
+  "skills": "React, Python",
+  "phone": "9999999999",
+  "experience": "3 years"
+}</pre></td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/auth/register/</td>
+        <td>Register as HR</td>
+        <td><pre>{
+  "username": "company1",
+  "email": "hr@company.com",
+  "password": "password123",
+  "confirm_password": "password123",
+  "full_name": "Jane Smith",
+  "role": "hr",
+  "company_name": "Tech Corp",
+  "company_description": "Leading tech company",
+  "website": "https://google.com",
+  "phone": "9999999999"
+}</pre></td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/auth/login/</td>
+        <td>Login with username & password</td>
+        <td><pre>{
+  "username": "jobseeker1",
+  "password": "password123"
+}</pre></td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/jobs/available/</td>
+        <td>Get all public job listings</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/company/company-id</td>
+        <td>get all company data</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/users/request-otp/</td>
+        <td>request otp for reset password</td>
+        <td><pre>
+          {
+            "email": "chaitanyakreddysomu@gmail.com"
+          }
+        </pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/users/verify-otp/</td>
+        <td>verify otp for reset password</td>
+        <td><pre>
+          {
+            "email": "chaitanyakreddysomu@gmail.com",
+            "otp": "123456"
+          }
+        </pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="method-patch">PATCH</td>
+        <td>/api/users/reset-password/</td>
+        <td>reset password</td>
+        <td><pre>
+          {
+            "email": "chaitanyakreddysomu@gmail.com",
+            "new_password": "reddy@123"
+          }
+          
+        </pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="method-patch">PATCH</td>
+        <td>/api/users/change-password/</td>
+        <td>password change from profile <b> (login requred and same api for all roles)</b></td>
+        <td><pre>
+
+          {
+            "current_password": "oldpassword123",
+            "new_password": "newpassword456"
+          }
+          
+        </pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- User -->
+  <h2>👤 Job Seeker (User)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Endpoint</th>
+        <th>Description</th>
+        <th>Sample Request</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/users/dashboard/</td>
+        <td>get all data once</td>
+        <td><pre>{
+          "user_profile": {
+              "id": "user_p2nb6xAFP!",
+              "username": "chaitu1111",
+              "image": null,
+              "email": "chaitu@gmail.com",
+              "full_name": "chaitureddy",
+              "phone": "09876543210",
+              "location": "default location",
+              "role": "user",
+              "skills": "skills,react,node",
+              "plan": "free",
+              "subscribe_date": null,
+              "experience": "3 years",
+              "resume": "https://jb-port-uploads.s3.amazonaws.com/resumes/resume_31050a3450e94138a3cbe95253db9389.pdf",
+              "company_name": null,
+              "company_description": null,
+              "bio": "i am a singer",
+              "website": null,
+              "is_verified": "approved",
+              "created_at": "2025-08-06T05:44:00.493742Z",
+              "updated_at": "2025-08-06T07:09:16.381488Z"
+          },
+          "available_jobs": [
+              {
+                  "id": "job_tcYC~*ng_h",
+                  "created_by_id": "user_hIoG*%YN$3",
+                  "company_name": "tech mahendra",
+                  "title": "title test",
+                  "department": "dept",
+                  "location": "loac",
+                  "job_type": "part_time",
+                  "work_arrangement": "remote",
+                  "experience_level": "100 years",
+                  "min_salary": "1000.00",
+                  "max_salary": "1116.00",
+                  "currency": "INR",
+                  "description": "jd",
+                  "responsibilities": "resp",
+                  "requirements": "requ",
+                  "skills": "skills,react,node",
+                  "benefits": "perks",
+                  "application_deadline": "2025-08-06",
+                  "is_urgent": true,
+                  "is_remote": true,
+                  "status": "active",
+                  "created_at": "2025-08-05T13:54:03.551405Z",
+                  "application_count": 2,
+                  "created_by": "user_hIoG*%YN$3"
+              },
+              
+          ],
+          "recent_applications": [
+              {
+                  "id": 12,
+                  "application_id": "app_aa4f18f014d7",
+                  "job": "job_E5UOFzQweh",
+                  "job_title": "fontend1111",
+                  "company_name": "tech mahendra",
+                  "name": "chaitureddy",
+                  "role": "contract",
+                  "applied_by": "user_p2nb6xAFP!",
+                  "applied_on": "2025-08-06T08:05:11.122134Z",
+                  "status": "new"
+              },
+              
+          ],
+          "recommended_jobs": [
+              {
+                  "id": "job_a.q*F!.U_t",
+                  "created_by_id": "user_hIoG*%YN$3",
+                  "company_name": "tech mahendra",
+                  "title": "fontend",
+                  "department": "dvdvfv",
+                  "location": "lsihcslhadvs",
+                  "job_type": "part_time",
+                  "work_arrangement": "remote",
+                  "experience_level": "100 years",
+                  "min_salary": "1000.00",
+                  "max_salary": "9999.00",
+                  "currency": "USD",
+                  "description": "jd",
+                  "responsibilities": "resp",
+                  "requirements": "req",
+                  "skills": "skills,react,node",
+                  "benefits": "perks",
+                  "application_deadline": "2025-08-28",
+                  "is_urgent": true,
+                  "is_remote": true,
+                  "status": "active",
+                  "created_at": "2025-08-03T11:40:05.545560Z",
+                  "application_count": 2,
+                  "created_by": "user_hIoG*%YN$3"
+              }
+          ]
+      }</pre></td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/jobs/&lt;job_id&gt;/apply/</td>
+        <td>Apply to a job</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/applications/applied/</td>
+        <td>Get applications submitted by current user</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>http://127.0.0.1:8000/api/users/&lt; user id &gt;/presigned-resume-url/</td>
+        <td>Get resume url</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/users/profile/</td>
+        <td>View own profile</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-patch">PATCH</td>
+        <td>/api/users/profile/edit/</td>
+        <td>Edit profile</td>
+        <td><pre> {
+          "id": "user_4sLy4az17w",
+          "username": "chaitureddy",
+          "image": "https://jb-port-uploads.s3.amazonaws.com/profile_images/profile_6168503058514f45bc203de4ee8b5fc3.png",
+          "email": "chaitanyakreddysomu@gmail.com",
+          "full_name": "chaitu reddy",
+          "phone": "234323454",
+          "location": "default location",
+          "role": "user",
+          "skills": "react, node, django",
+          "plan": "free",
+          "subscribe_date": null,
+          "experience": "10 years",
+          "resume": null,
+          "company_name": null,
+          "company_description": null,
+          "bio": "i am a singer",
+          "website": null,
+          "is_verified": "approved",
+          "created_at": "2025-08-02T14:12:53.607852Z",
+          "updated_at": "2025-08-04T09:10:55.608611Z"
+      }</pre></td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/users/companies-list/</td>
+        <td>get all companies</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/users/upload-profile-image/</td>
+        <td>upload profile pic</td>
+        <!-- <td>–</td -->
+        <td><pre>{key:resume
+          upload image file in body form data  
+          }</pre></td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/users/upload-resume/</td>
+        <td>upload resume</td>
+        <td><pre>{key:resume
+        upload pdf file in body form data  
+        }</pre></td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/users/subscribe/</td>
+        <td>Take Subscription</td>
+        <td><pre>{
+          "plan": "free/legend/ultra-legend"
+        }</pre></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- HR -->
+  <h2>🏢 Company / HR</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Endpoint</th>
+        <th>Description</th>
+        <th>Sample Request</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="method-post">POST</td><td>/api/applications/&lt;application_id&gt;/update-status/</td><td>Application status update</td><td><pre>{"status:new/hired/rejected"}</pre></td></tr>
+
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/http://127.0.0.1:8000/api/hr/dashboard/</td>
+        <td>Get all data of hr</td>
+        <td><pre> {
+          "user_profile": {
+              "id": "user_hIoG*%YN$3",
+              "username": "companydashboard",
+              "image": "https://jb-port-uploads.s3.amazonaws.com/profile_images/profile_6d3beb54a9b94bd8bbfdf780ef5175bb.png",
+              "email": "hr@hr.com",
+              "full_name": "company dashboard",
+              "phone": "0987654321",
+              "location": "All over india",
+              "role": "hr",
+              "skills": "",
+              "plan": "free",
+              "subscribe_date": null,
+              "experience": "",
+              "resume": null,
+              "company_name": "tech mahendra",
+              "company_description": "tech mahendra",
+              "bio": "i am a singer",
+              "website": "https://www.techmahindra.com/",
+              "is_verified": "approved",
+              "created_at": "2025-08-01T05:59:11.565715Z",
+              "updated_at": "2025-08-01T16:59:49.069066Z"
+          },
+          "posted_jobs": [
+              {
+                  "id": "job_tcYC~*ng_h",
+                  "created_by_id": "user_hIoG*%YN$3",
+                  "company_name": "tech mahendra",
+                  "created_by": "user_hIoG*%YN$3",
+                  "title": "title test",
+                  "department": "dept",
+                  "location": "loac",
+                  "job_type": "part_time",
+                  "work_arrangement": "remote",
+                  "experience_level": "100 years",
+                  "min_salary": "1000.00",
+                  "max_salary": "1116.00",
+                  "currency": "INR",
+                  "description": "jd",
+                  "responsibilities": "resp",
+                  "requirements": "requ",
+                  "skills": "skills,react,node",
+                  "benefits": "perks",
+                  "application_deadline": "2025-08-06",
+                  "is_urgent": true,
+                  "is_remote": true,
+                  "status": "active",
+                  "created_at": "2025-08-05T13:54:03.551405Z",
+                  "application_count": 2
+              },
+              
+          ],
+          "Job_applications": [
+              {
+                  "id": 13,
+                  "application_id": "app_df3e8113274a",
+                  "job": "job_a.q*F!.U_t",
+                  "job_title": "fontend",
+                  "company_name": "tech mahendra",
+                  "name": "chaitureddy",
+                  "role": "part_time",
+                  "applied_by": {
+                      "id": "user_p2nb6xAFP!",
+                      "username": "chaitu1111",
+                      "image": null,
+                      "email": "chaitu@gmail.com",
+                      "full_name": "chaitureddy",
+                      "phone": "09876543210",
+                      "location": "default location",
+                      "role": "user",
+                      "skills": "skills, react, django, node",
+                      "plan": "ultra-legend",
+                      "subscribe_date": "2025-08-06T09:15:09.832385Z",
+                      "experience": "3 years",
+                      "resume": "https://jb-port-uploads.s3.amazonaws.com/resumes/resume_31050a3450e94138a3cbe95253db9389.pdf",
+                      "company_name": null,
+                      "company_description": null,
+                      "bio": "i am a singer",
+                      "website": null,
+                      "is_verified": "approved",
+                      "created_at": "2025-08-06T05:44:00.493742Z",
+                      "updated_at": "2025-08-06T09:25:17.865155Z"
+                  },
+                  "applied_on": "2025-08-06T09:09:17.161841Z",
+                  "status": "new"
+              },
+              
+              
+          ]
+      }</pre></td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/applications/hr/</td>
+        <td>Get all job applications for jobs posted by current HR</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/jobs/created/all</td>
+        <td>Get all jobs posted by current HR</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/hr/users/all/</td>
+        <td>Get all users by hr</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/hr/users</td>
+        <td>Get all users by only hr</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/jobs/post/</td>
+        <td>POST jobs</td>
+        <td>{
+          "title": "Frontend Developer",
+          "department": "Engineering",
+          "location": "New York, NY",
+          "job_type": "full_time",
+          "work_arrangement": "hybrid",
+          "experience_level": "mid",
+          "min_salary": 60000,
+          "max_salary": 90000,
+          "currency": "INR",
+          "description": "We are looking for a skilled frontend developer...",
+           "responsibilities": "Write clean, efficient code.\nCollaborate with cross-functional teams.\nParticipate in code reviews.",
+          "requirements": "Bachelor's degree in CS or related field.\n3+ years of software development experience.\nExperience with Django or similar frameworks.",
+           "skills": "JavaScript, React, CSS, HTML",
+            "benefits": "Health insurance\nFlexible working hours\nStock options",
+          "application_deadline": "2025-09-01",
+          "is_urgent": true,
+          "is_remote": false
+        }
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="method-patch">PATCH</td>
+        <td>/api/applications/&lt;application_id&gt;/update-status/</td>
+        <td>Update application status</td>
+        <td><pre>{ "status": "shortlisted" }</pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Admin -->
+  <h2>🛡️ Admin</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Endpoint</th>
+        <th>Description</th>
+        <th>Sample Request</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/admin/pending-verifications/</td>
+        <td>List unverified companies</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-post">POST</td>
+        <td>/api/admin/verify-company/&lt;user_id&gt;/</td>
+        <td>Approve or reject company</td>
+        <td><pre>{ "action": "approve" }</pre>or<pre>{ "action": "reject" }</pre></td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/admin/users/all/</td>
+        <td>List all users</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/admin/companies/all/</td>
+        <td>List all companies (HRs)</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/admin/admin-list/</td>
+        <td>List all admins</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-get">GET</td>
+        <td>/api/admin/jobs/all/</td>
+        <td>List all jobs (Admin)</td>
+        <td>–</td>
+      </tr>
+      <tr>
+        <td class="method-patch">PATCH</td>
+        <td>/api/admin/edit-role/&lt;str:pk&gt;/</td>
+        <td>Edit role (user/admin) (Admin)</td>
+        <td><pre>
+        {
+          "role": "user"
+        }
+      </pre>
+        </td>
+      </tr>
+
+
+      
+   
+    </tbody>
+  </table>
+</body>
+</html>

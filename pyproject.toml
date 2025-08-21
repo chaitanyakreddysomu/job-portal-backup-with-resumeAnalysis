@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "job-website-django"
+version = "0.1.0"
+description = ""
+authors = ["SomuChaitanyaKumarReddy <145319559+SomuChaitanyaKumarReddy@users.noreply.github.com>"]
+
+packages = [
+    { include = "core" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+gunicorn = "^23.0.0"
+django = "^5.2.4"
+decouple = "^0.0.7"
+python-decouple = "^3.8"
+pathlib = "^1.0.1"
+psycopg2-binary = "^2.9.10"
+django-cors-headers = "^4.7.0"
+django-environ = "^0.12.0"
+djangorestframework-simplejwt = "^5.5.1"
+python-dotenv = "^1.1.1"
+django-storages = "^1.14.6"
+boto3 = "^1.40.2"
+razorpay = "^1.4.2"
+google-auth = "^2.40.3"
+setuptools = "^80.9.0"
+pymupdf = "^1.26.3"
+pypdf2 = "^3.0.1"
+pdfminer-six = ">=20221105,<20250000"
+pillow = "^11.3.0"
+pytesseract = "^0.3.13"
+sentence-transformers = "^5.1.0"
+pdfminer = "^20191125"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
